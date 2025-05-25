@@ -14,7 +14,6 @@ use App\Http\Controllers\CartController;
 
 
 
-// Ana sayfa: giriş yapılmamışsa login ekranına yönlendir
 Route::get('/', function () {
     if (auth()->check()) {
         return redirect()->route(auth()->user()->role === 'admin' ? 'admin.dashboard' : 'user.dashboard');
@@ -47,12 +46,12 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
 Route::middleware('auth')->group(function () {
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-    // Profil işlemleri
+    
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    // Role göre yönlendirme
+    
     Route::get('/redirect', function () {
         return redirect()->route('home');
     });
@@ -84,13 +83,10 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::post('/cart/api-add', [CartController::class, 'addFromApi'])->name('cart.api.add');
 
-// Sepetteki ürün adedini artır
 Route::post('/cart/increase/{id}', [CartController::class, 'increaseQuantity'])->name('cart.increase');
 
-// Sepetteki ürün adedini azalt
 Route::post('/cart/decrease/{id}', [CartController::class, 'decreaseQuantity'])->name('cart.decrease');
 
-// Sepetten sil
 Route::post('/cart/remove/{id}', [CartController::class, 'remove'])->name('cart.remove');
 
 Route::get('/checkout', [CartController::class, 'checkout'])->name('checkout');
@@ -102,6 +98,5 @@ Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 
 });
 
-// Herkese açık sayfalar
 Route::get('/konserler', fn () => view('konserler'))->name('konserler');
 Route::get('/tiyatrolar', fn () => view('tiyatrolar'))->name('tiyatrolar');

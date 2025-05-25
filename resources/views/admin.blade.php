@@ -14,7 +14,7 @@
 </div>
 
 
-    {{-- Kullanıcı Onayları --}}
+   
     <section class="adminForm">
         <h2 class="adminBaslik">Kullanıcı Onayları</h2>
         @forelse($users as $user)
@@ -41,8 +41,7 @@
 
     <div class="adminTwoColumnContainer">
 
-    {{-- Sol sütun: Duyuru ve Etkinlik'type' => 'required|in:Konser,Tiyatro',
- Ekleme Formları --}}
+  
     <section class="adminForm adminLeftColumn">
         <h2 class="adminBaslik">Duyuru Ekle</h2>
         <form action="{{ route('announcements.store') }}" method="POST">
@@ -74,7 +73,7 @@
         </form>
     </section>
 
-    {{-- Sağ sütun: Eklenen Duyuru ve Etkinlik Kartları --}}
+   
     <section class="adminRightColumn">
 
         <h2 class="adminBaslik">Duyurular</h2>

@@ -44,11 +44,11 @@ class AuthController extends Controller
     {
         $credentials = $request->only('email', 'password');
 
-        // Kullanıcı varsa ve şifresi doğruysa
+        
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
 
-            // Onaylı değilse girişe izin verme
+            
             if (!$user->is_approved) {
                 Auth::logout();
                 return back()->withErrors(['email' => 'Hesabınız henüz onaylanmadı.']);
@@ -59,7 +59,7 @@ class AuthController extends Controller
             }
             $request->session()->regenerate();
 
-            // Rol kontrolü
+            
             if ($user->role === 'admin') {
                 return redirect()->route('admin.dashboard');
             } else {

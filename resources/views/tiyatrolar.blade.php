@@ -51,17 +51,16 @@
     const eventsList = document.getElementById("events-list");
     const pagination = document.getElementById("pagination");
     const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-eventsList.innerHTML = "";  // listeyi temizle
+eventsList.innerHTML = "";  
 
-// Kapasiteyi backend'den almak için async fonksiyon
 async function getCapacity(eventId) {
     try {
         const res = await fetch(`/api/event-capacity?id=${eventId}`);
         if (!res.ok) throw new Error("Capacity fetch error");
         const data = await res.json();
-        return data.capacity ?? 50; // yoksa 50 döner
+        return data.capacity ?? 50; 
     } catch {
-        return 50; // hata olursa default kapasite
+        return 50; 
     }
 }
 
@@ -88,11 +87,11 @@ for (const event of events) {
         weather = await fetchWeather(lat, lon);
     }
 
-    // Burada kapasiteyi API'den çekiyoruz
+    
     const capacity = await getCapacity(event.id);
 
-    const price = "100₺";      // Sabit fiyat gösterimi
-    const rawPrice = 100;      // Gerçek işlemde kullanılacak değer
+    const price = "100₺";      
+    const rawPrice = 100;      
 
     const eventElement = document.createElement("div");
     eventElement.className = "event border rounded p-4 bg-white shadow";
@@ -124,7 +123,7 @@ for (const event of events) {
     eventsList.appendChild(eventElement);
 }
 
-    // Sayfalama kodu burada kalacak (aynı şekilde)
+    
     pagination.innerHTML = "";
     for (let i = 1; i <= Math.min(pageCount, 10); i++) {
         const btn = document.createElement("button");

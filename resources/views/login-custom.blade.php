@@ -1,4 +1,4 @@
-<!-- resources/views/auth/login.blade.php -->
+
 
 <!DOCTYPE html>
 <html lang="tr">

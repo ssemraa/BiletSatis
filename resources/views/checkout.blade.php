@@ -69,7 +69,7 @@
             <input type="text" id="transfer_reference" name="transfer_reference" class="border rounded px-3 py-2 w-full" placeholder="Referans numarasını giriniz">
         </div>
 
-        <!-- Kapıda ödeme seçeneği için ek alan gerekmez -->
+      
 
         <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 mt-6">Ödemeyi Tamamla</button>
     </form>

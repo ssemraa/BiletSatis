@@ -16,10 +16,9 @@ class CartController extends Controller
 }
 
 
-// Sepete ekleme (örnek)
 public function addToCart(Request $request, $eventId)
 {
-    //dd($eventId); 
+     
     $cart = session()->get('cart', []);
 
     if(isset($cart[$eventId])) {
@@ -30,7 +29,7 @@ public function addToCart(Request $request, $eventId)
             return redirect()->back()->with('error', 'Etkinlik bulunamadı.');
         }
 
-        // Burada model değil dizi ekleniyor
+        
         $cart[$eventId] = [
             'name' => $event->name,
             'quantity' => 1,
@@ -50,12 +49,12 @@ public function addFromApi(Request $request)
 {
     $cart = session()->get('cart', []);
 
-    $id = md5($request->input('name') . $request->input('url')); // benzersiz id
+    $id = md5($request->input('name') . $request->input('url')); 
     $stockKey = 'api_stock_' . $id;
 
-    // API etkinliği için varsayılan stok oluştur
+    
     if (!Cache::has($stockKey)) {
-        Cache::put($stockKey, 50); // her etkinlik varsayılan 50 kontenjanla başlar
+        Cache::put($stockKey, 50); 
     }
 
     $currentStock = Cache::get($stockKey);
@@ -86,7 +85,7 @@ public function increaseQuantity($id)
     $cart = session()->get('cart', []);
     if (isset($cart[$id])) {
         if (is_numeric($id)) {
-            // DB'deki event için kontrol
+            
             $event = Event::find($id);
             if ($event) {
                 if ($cart[$id]['quantity'] < $event->remaining_tickets) {
@@ -97,7 +96,7 @@ public function increaseQuantity($id)
                 }
             }
         } else {
-            // API ürünleri için stok kontrolü Cache üzerinden
+            
             $stockKey = 'api_stock_' . $id;
             $currentStock = \Illuminate\Support\Facades\Cache::get($stockKey, 50);
 

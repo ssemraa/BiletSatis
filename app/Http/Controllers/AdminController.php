@@ -12,13 +12,13 @@ class AdminController extends Controller
 {
     public function index()
     {
-        // Admin değilse erişim engellensin
+       
         if (auth()->user()->role !== 'admin') {
             abort(403, 'Bu sayfaya sadece adminler erişebilir.');
         }
 
-        // Tüm kullanıcıları (veya sadece onaysızları) al
-        $users = User::where('role', 'user')->get(); // veya sadece onaysız: ->where('is_approved', false)
+        
+        $users = User::where('role', 'user')->get(); 
 
 
                 $users = User::where('is_approved', false)->get();
@@ -59,7 +59,7 @@ class AdminController extends Controller
 
 public function dashboard()
 {
-    $events = Event::all(); // price sütunu da burada gelecek
+    $events = Event::all(); 
     return view('admin', compact('events'));
 }
 

@@ -10,9 +10,8 @@ class HomeController extends Controller
 {
      public function index()
     {
-        // Hem API'den çekilen, hem admin'in eklediği etkinlikler buraya çekilebilir
-         $events = Event::latest()->take(5)->get(); // Son 5 etkinlik
-        $announcements = Announcement::latest()->take(5)->get(); // Son 5 duyuru
+         $events = Event::latest()->take(5)->get(); 
+        $announcements = Announcement::latest()->take(5)->get(); 
 
         return view('home', compact('events', 'announcements'));
     }

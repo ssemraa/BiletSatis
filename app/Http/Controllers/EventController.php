@@ -62,7 +62,7 @@ class EventController extends Controller
 
 
 
-// Sepete ekleme fonksiyonunda kapasiteyi azalt
+
 public function addApiEventToCart(Request $request)
 {
     $event = Event::where('ticketmaster_id', $request->id)->first();
@@ -87,8 +87,7 @@ public function addApiEventToCart(Request $request)
         ];
     }
 
-    // Sepete ekledik, ama kapasiteyi henüz değiştirmiyoruz,
-    // sadece satın alma işlemi sırasında kapasite azalacak.
+  
 
     session()->put('cart', $cart);
 
@@ -103,7 +102,7 @@ public function addApiEventToCart(Request $request)
 public function showCart()
 {
     $cart = session()->get('cart', []);
-    return view('index', compact('cart'));  // cart.blade.php dosya ismi bu örnekte
+    return view('index', compact('cart'));  
 }
 
 
