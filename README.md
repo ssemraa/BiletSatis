@@ -84,7 +84,7 @@ DB_PASSWORD=
 ### 1. Projeyi klonlayın:
 ```bash
 git clone https://github.com/ssemraa/BiletSatis.git
-cd proje-sepet
+
 ```
 
 ### 2. Bağımlılıkları yükleyin:
