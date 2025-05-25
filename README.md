@@ -83,7 +83,7 @@ DB_PASSWORD=
 
 ### 1. Projeyi klonlayın:
 ```bash
-git clone https://github.com/kullaniciadi/proje-sepet.git
+git clone https://github.com/ssemraa/BiletSatis.git
 cd proje-sepet
 ```
 
@@ -120,7 +120,7 @@ php artisan serve
 
 ## 🌐 Proje Kaynak Kodu
 
-🔗 GitHub: [https://github.com/kullaniciadi/proje-sepet](https://github.com/kullaniciadi/proje-sepet)
+🔗 GitHub: (https://github.com/ssemraa/BiletSatis)
 
 ---
 
